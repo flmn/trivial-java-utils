@@ -1,4 +1,4 @@
-package com.github.flmn;
+package com.github.flmn.util;
 
 public final class StringUtils {
     private StringUtils() {}

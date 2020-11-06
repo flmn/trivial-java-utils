@@ -1,9 +1,7 @@
-package com.github.flmn;
+package com.github.flmn.util;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class StringUtilsTest {
 
