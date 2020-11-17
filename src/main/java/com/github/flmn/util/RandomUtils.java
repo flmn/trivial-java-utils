@@ -2,11 +2,8 @@ package com.github.flmn.util;
 
 import java.util.Random;
 
-public final class RandomUtils {
+public abstract class RandomUtils {
     private static final Random RANDOM = new Random();
-
-    private RandomUtils() {
-    }
 
     public static boolean nextBoolean() {
         return RANDOM.nextBoolean();

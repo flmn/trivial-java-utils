@@ -7,9 +7,7 @@ import java.util.StringJoiner;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-public final class ListUtils {
-    private ListUtils() {
-    }
+public abstract class ListUtils {
 
     public static <E> List<E> distinct(List<E> input) {
         return new ArrayList<>(new HashSet<>(input));

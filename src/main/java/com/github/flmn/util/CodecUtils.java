@@ -2,9 +2,7 @@ package com.github.flmn.util;
 
 import java.util.Base64;
 
-public final class CodecUtils {
-    private CodecUtils() {
-    }
+public abstract class CodecUtils {
 
     public static String bytesToHex(byte[] bytes) {
         StringBuilder sb = new StringBuilder();

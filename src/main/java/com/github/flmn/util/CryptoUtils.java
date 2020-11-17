@@ -6,9 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
-public final class CryptoUtils {
-    private CryptoUtils() {
-    }
+public abstract class CryptoUtils {
 
     public static String hmacSha256(String src, String key) {
         SecretKeySpec secret_key = new SecretKeySpec(key.getBytes(), "HmacSHA256");

@@ -3,19 +3,24 @@ package com.github.flmn.util;
 import java.text.DecimalFormat;
 import java.util.UUID;
 
-public final class StringUtils {
+public abstract class StringUtils {
     public static final String EMPTY = "";
     public static final String SPACE = " ";
     public static final String LF = "\n";
     public static final String CR = "\r";
 
-    private StringUtils() {
-    }
-
     private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#0.0");
 
     public static boolean isNullOrEmpty(String str) {
         return str == null || str.isEmpty();
+    }
+
+    public static String toString(Object obj, boolean nullString) {
+        if (obj == null) {
+            return nullString ? "null" : null;
+        }
+
+        return obj.toString();
     }
 
     public static boolean isBlank(String str) {
