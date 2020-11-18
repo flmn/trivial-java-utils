@@ -9,12 +9,12 @@ import java.security.NoSuchAlgorithmException;
 public abstract class CryptoUtils {
 
     public static String hmacSha256(String src, String key) {
-        SecretKeySpec secret_key = new SecretKeySpec(key.getBytes(), "HmacSHA256");
+        SecretKeySpec secretKey = new SecretKeySpec(key.getBytes(), "HmacSHA256");
 
         Mac mac;
         try {
             mac = Mac.getInstance("HmacSHA256");
-            mac.init(secret_key);
+            mac.init(secretKey);
         } catch (NoSuchAlgorithmException | InvalidKeyException e) {
             return null;
         }

@@ -15,4 +15,8 @@ public abstract class StringBoolean {
             return FALSE;
         }
     }
+
+    public static boolean isValid(String str) {
+        return !TRUE.equals(str) && !FALSE.equals(str);
+    }
 }
