@@ -43,6 +43,12 @@ public final class TimeUtils {
         return DEFAULT_DATE_TIME_FORMATTER.format(ldt);
     }
 
+    public static String format(LocalDateTime ldt, String format) {
+        DateTimeFormatter formatter = DATE_TIME_FORMATTERS.getOrDefault(format, DateTimeFormatter.ofPattern(format));
+
+        return formatter.format(ldt);
+    }
+
     public static LocalDate parseDate(String str) {
         if (StringUtils.isNullOrEmpty(str)) {
             return null;
