@@ -1,9 +1,6 @@
 package com.github.flmn.util;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.HashMap;
@@ -33,6 +30,10 @@ public final class TimeUtils {
     }
 
     private TimeUtils() {
+    }
+
+    public static LocalDateTime utcNow() {
+        return LocalDateTime.now(ZoneOffset.UTC);
     }
 
     public static String format(LocalDate ld) {
