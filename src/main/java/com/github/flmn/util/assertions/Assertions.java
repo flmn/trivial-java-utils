@@ -1,6 +1,9 @@
 package com.github.flmn.util.assertions;
 
-public abstract class Assertions {
+public final class Assertions {
+
+    private Assertions() {
+    }
 
     /**
      * Throw IllegalArgumentException if the value is null.

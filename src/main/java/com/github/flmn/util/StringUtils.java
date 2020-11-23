@@ -3,13 +3,16 @@ package com.github.flmn.util;
 import java.text.DecimalFormat;
 import java.util.UUID;
 
-public abstract class StringUtils {
+public final class StringUtils {
     public static final String EMPTY = "";
     public static final String SPACE = " ";
     public static final String LF = "\n";
     public static final String CR = "\r";
 
     private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#0.0");
+
+    private StringUtils() {
+    }
 
     public static boolean isNullOrEmpty(String str) {
         return str == null || str.isEmpty();

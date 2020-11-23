@@ -9,7 +9,7 @@ import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class TimeUtils {
+public final class TimeUtils {
     public static final ZoneId CST = ZoneId.of("Asia/Shanghai");
     public static final DateTimeFormatter DEFAULT_DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     public static final DateTimeFormatter DEFAULT_DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -30,6 +30,9 @@ public abstract class TimeUtils {
         for (String format : formats) {
             DATE_TIME_FORMATTERS.put(format, DateTimeFormatter.ofPattern(format));
         }
+    }
+
+    private TimeUtils() {
     }
 
     public static String format(LocalDate ld) {

@@ -4,7 +4,10 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public abstract class HashUtils {
+public final class HashUtils {
+
+    private HashUtils() {
+    }
 
     public static String md5(String src) {
         return digest("MD5", src);

@@ -1,6 +1,9 @@
 package com.github.flmn.util;
 
-public abstract class NumberUtils {
+public final class NumberUtils {
+
+    private NumberUtils() {
+    }
 
     public static int toInt(final String str, final int defaultValue) {
         if (StringUtils.isNullOrEmpty(str)) {
