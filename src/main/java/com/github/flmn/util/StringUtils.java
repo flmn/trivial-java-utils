@@ -18,6 +18,10 @@ public final class StringUtils {
         return str == null || str.isEmpty();
     }
 
+    public static boolean isNotNullOrEmpty(String str) {
+        return !isNullOrEmpty(str);
+    }
+
     public static String toString(Object obj, boolean nullString) {
         if (obj == null) {
             return nullString ? "null" : null;
