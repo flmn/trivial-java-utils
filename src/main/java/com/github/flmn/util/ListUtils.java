@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.StringJoiner;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -14,6 +15,14 @@ public final class ListUtils {
 
     public static <E> List<E> distinct(List<E> input) {
         return new ArrayList<>(new HashSet<>(input));
+    }
+
+    public static <T> void forEachWithCounter(Iterable<T> source, BiConsumer<Integer, T> consumer) {
+        int i = 0;
+        for (T item : source) {
+            consumer.accept(i, item);
+            i++;
+        }
     }
 
     public static <E> void batch(List<E> list, int batchSize, Consumer<List<E>> consumer) {
