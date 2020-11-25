@@ -1,9 +1,10 @@
 package com.github.flmn.util;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 public final class RandomUtils {
-    private static final Random RANDOM = new Random();
+    private static final Random RANDOM = new SecureRandom();
 
     private RandomUtils() {
     }
