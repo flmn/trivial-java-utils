@@ -30,7 +30,7 @@ public final class IdUtils {
         return UUID.randomUUID().toString();
     }
 
-    public static String shortUuid() {
+    public static String compactUuid() {
         return uuid().replace("-", "");
     }
 
