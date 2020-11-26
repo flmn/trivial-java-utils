@@ -3,6 +3,7 @@ package com.github.flmn.util;
 import java.nio.ByteBuffer;
 import java.security.SecureRandom;
 import java.time.Instant;
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.github.flmn.util.BitUtils.*;
@@ -23,6 +24,14 @@ public final class IdUtils {
     }
 
     private IdUtils() {
+    }
+
+    public static String uuid() {
+        return UUID.randomUUID().toString();
+    }
+
+    public static String shortUuid() {
+        return uuid().replace("-", "");
     }
 
     public static String mongoId() {

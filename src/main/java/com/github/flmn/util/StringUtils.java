@@ -1,7 +1,6 @@
 package com.github.flmn.util;
 
 import java.text.DecimalFormat;
-import java.util.UUID;
 
 public final class StringUtils {
     public static final String EMPTY = "";
@@ -20,6 +19,22 @@ public final class StringUtils {
 
     public static boolean isNotNullOrEmpty(String str) {
         return !isNullOrEmpty(str);
+    }
+
+    public static String nullToEmpty(String str) {
+        if (str == null) {
+            return "";
+        }
+
+        return str;
+    }
+
+    public static String emptyToNull(String str) {
+        if ("".equals(str)) {
+            return null;
+        }
+
+        return str;
     }
 
     public static String toString(Object obj, boolean nullString) {
@@ -44,14 +59,6 @@ public final class StringUtils {
         }
 
         return src.substring(0, count);
-    }
-
-    public static String uuid() {
-        return UUID.randomUUID().toString();
-    }
-
-    public static String shortUuid() {
-        return uuid().replace("-", "");
     }
 
     public static String omit(String src, int count) {
