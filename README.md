@@ -16,9 +16,9 @@ Include `https://jitpack.io` in repositories.
 ```
 dependencies {
     ...
-    implementation 'com.github.flmn:trivial-java-utils:$version'
+    implementation 'com.github.flmn:trivial-java-utils:0.0.12'
     ...
 }
 ```
 
-Include `com.github.flmn:trivial-java-utils:$version` in dependencies.
+Include `com.github.flmn:trivial-java-utils:0.0.12` in dependencies.

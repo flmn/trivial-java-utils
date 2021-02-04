@@ -3,6 +3,7 @@ package com.github.flmn.util;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -94,5 +95,15 @@ public final class TimeUtils {
 
     public static LocalDateTime toBeijingTime(ZonedDateTime zdt) {
         return LocalDateTime.ofInstant(zdt.toInstant(), TimeUtils.CST);
+    }
+
+    public static Date toDate(LocalDateTime ldt) {
+        return toDate(ldt.atZone(CST));
+    }
+
+    public static Date toDate(ZonedDateTime zdt) {
+        Instant instant = zdt.toInstant();
+
+        return Date.from(instant);
     }
 }
