@@ -3,12 +3,14 @@ package com.github.flmn.util;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.temporal.TemporalUnit;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class TimeUtils {
     public static final ZoneId CST = ZoneId.of("Asia/Shanghai");
+    public static final ZoneId UTC = ZoneOffset.UTC;
     public static final DateTimeFormatter DEFAULT_DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     public static final DateTimeFormatter DEFAULT_DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private static final Map<String, DateTimeFormatter> DATE_TIME_FORMATTERS;
@@ -34,7 +36,7 @@ public final class TimeUtils {
     }
 
     public static LocalDateTime utcNow() {
-        return LocalDateTime.now(ZoneOffset.UTC);
+        return LocalDateTime.now(UTC);
     }
 
     public static String format(LocalDate ld) {
@@ -105,5 +107,13 @@ public final class TimeUtils {
         Instant instant = zdt.toInstant();
 
         return Date.from(instant);
+    }
+
+    public static boolean near(LocalDateTime base, LocalDateTime target, long tolerance, TemporalUnit toleranceUnit) {
+        if (base == null || target == null) {
+            return false;
+        }
+
+        return target.isAfter(base.minus(tolerance, toleranceUnit)) && target.isBefore(base.plus(tolerance, toleranceUnit));
     }
 }
