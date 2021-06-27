@@ -116,4 +116,8 @@ public final class TimeUtils {
 
         return target.isAfter(base.minus(tolerance, toleranceUnit)) && target.isBefore(base.plus(tolerance, toleranceUnit));
     }
+
+    public static String durationString(LocalDateTime start, LocalDateTime end) {
+        return "todo";
+    }
 }

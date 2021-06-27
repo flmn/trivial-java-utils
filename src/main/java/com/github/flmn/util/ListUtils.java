@@ -17,6 +17,14 @@ public final class ListUtils {
         return new ArrayList<>(new HashSet<>(input));
     }
 
+    public static <E> List<E> head(List<E> input, int count) {
+        return input.subList(0, Math.min(count, input.size()));
+    }
+
+    public static <E> List<E> tail(List<E> input, int count) {
+        return input.subList(input.size() - Math.min(count, input.size()), input.size());
+    }
+
     public static <T> void forEachWithCounter(Iterable<T> source, BiConsumer<Integer, T> consumer) {
         int i = 0;
         for (T item : source) {
