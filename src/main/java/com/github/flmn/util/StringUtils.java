@@ -1,6 +1,9 @@
 package com.github.flmn.util;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public final class StringUtils {
     public static final String EMPTY = "";
@@ -67,6 +70,30 @@ public final class StringUtils {
         }
 
         return src.substring(0, count - 3) + "...";
+    }
+
+    public static List<String> split(String str, final String delim) {
+        if (null == str) {
+            return Collections.emptyList();
+        }
+
+        if (StringUtils.isNullOrEmpty(delim)) {
+            return Collections.singletonList(str);
+        }
+
+        final List<String> result = new ArrayList<>();
+        while (true) {
+            int index = str.indexOf(delim);
+            if (index < 0) {
+                result.add(str);
+                break;
+            }
+            result.add(str.substring(0, index));
+
+            str = str.substring(index + delim.length());
+        }
+
+        return result;
     }
 
     public static String fileSize(long size) {
