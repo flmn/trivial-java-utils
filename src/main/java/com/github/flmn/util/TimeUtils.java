@@ -11,8 +11,9 @@ import java.util.Map;
 public final class TimeUtils {
     public static final ZoneId CST = ZoneId.of("Asia/Shanghai");
     public static final ZoneId UTC = ZoneOffset.UTC;
-    public static final DateTimeFormatter DEFAULT_DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    public static final DateTimeFormatter DEFAULT_DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    public static final DateTimeFormatter ISO_DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+    public static final DateTimeFormatter SIMPLE_DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    public static final DateTimeFormatter SIMPLE_DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private static final Map<String, DateTimeFormatter> DATE_TIME_FORMATTERS;
 
     static {
@@ -40,11 +41,11 @@ public final class TimeUtils {
     }
 
     public static String format(LocalDate ld) {
-        return DEFAULT_DATE_FORMATTER.format(ld);
+        return SIMPLE_DATE_FORMATTER.format(ld);
     }
 
     public static String format(LocalDateTime ldt) {
-        return DEFAULT_DATE_TIME_FORMATTER.format(ldt);
+        return SIMPLE_DATE_TIME_FORMATTER.format(ldt);
     }
 
     public static String format(LocalDateTime ldt, String format) {
@@ -59,7 +60,7 @@ public final class TimeUtils {
         }
 
         try {
-            return LocalDate.parse(str, DEFAULT_DATE_FORMATTER);
+            return LocalDate.parse(str, SIMPLE_DATE_FORMATTER);
         } catch (DateTimeParseException ignored) {
         }
 
@@ -97,6 +98,16 @@ public final class TimeUtils {
 
     public static LocalDateTime toBeijingTime(ZonedDateTime zdt) {
         return LocalDateTime.ofInstant(zdt.toInstant(), TimeUtils.CST);
+    }
+
+    public static LocalDateTime localToUTC(LocalDateTime ldt) {
+        return toUTC(ldt, ZoneId.systemDefault());
+    }
+
+    public static LocalDateTime toUTC(LocalDateTime ldt, ZoneId zoneId) {
+        return ldt.atZone(zoneId)
+                .withZoneSameInstant(UTC)
+                .toLocalDateTime();
     }
 
     public static Date toDate(LocalDateTime ldt) {
